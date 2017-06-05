@@ -1,0 +1,13 @@
+---
+- name: "Copy install script"
+  template: "src=pkg_control.py.j2 dest=/tmp/pkg_control.py"
+
+- name: "Install Package Control"
+  command: "python3 /tmp/install_subl_pkg.py"
+
+- name: "Add Packages"
+  copy:
+    src: "files/Package Control.sublime-settings"
+    dest: "{{ sublime_package_settings_dest }}"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ group }}"

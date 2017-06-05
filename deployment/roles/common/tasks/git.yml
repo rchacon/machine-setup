@@ -1,0 +1,5 @@
+---
+- name: "Add gitconfig"
+  template:
+    src: gitconfig.j2
+    dest: "~/.gitconfig"
