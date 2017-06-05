@@ -1,0 +1,4 @@
+---
+- include: "apt.yml"
+- include: "terminal.yml"
+- include: "dnsmasq.yml"

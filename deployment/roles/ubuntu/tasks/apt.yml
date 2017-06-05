@@ -1,0 +1,46 @@
+---
+- name: "Install miscellaneous apt packages"
+  apt: "pkg={{ item }} state=installed update-cache=yes"
+  with_items:
+    - dnsmasq
+    - daemon
+    - freetds-dev
+    - git
+    - git-core
+    - libpq-dev
+    - libxml2-dev
+    - libxslt1-dev
+    - libcurl4-gnutls-dev
+    - libgnutls28-dev
+    - python-dev
+    - python3-dev
+    - slack
+    - npm
+    - nvm
+    - keepass2
+    - chrome
+    - terminator
+    - vagrant
+    - robomongo
+    - dropbox
+    - kdiff3
+    - pgadmin3
+    - sublime
+    - spotify
+    - virtualbox
+    - vlc
+  become: "yes"
+
+- name: "Add repo key for docker-ce"
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+  become: "yes"
+
+- name: "Add apt repo for docker-ce"
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable"
+  become: "yes"
+
+- name: "Install docker-ce"
+  apt: "pkg=docker-ce state=installed update-cache=yes"
+  become: "yes"

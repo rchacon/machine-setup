@@ -36,3 +36,16 @@ Apps that need to be installed manually:
 - Fluenz
 - HP Printer/Scanner software
 
+## Setup Ubuntu/Mint
+
+```bash
+$ cd deployment
+$ ansible-playbook -i local ubuntu.yml -K -e "github_email=<GITHUB_EMAIL>"
+```
+
+Manual Steps:
+
+- Create ssh keys for github accounts
+- Add Windows VM
+- Copy ~/Documents
+- Install the Sublime license
