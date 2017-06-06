@@ -4,10 +4,19 @@ My machine setup automated with Ansible.
 
 ## Installation
 
-- Download repo
-- Install ansible: `sudo pip install ansible`
+Download repo:
+```bash
+$ curl -L https://api.github.com/repos/rchacon/machine-setup/tarball | tar xz
+```
 
-## Setup Macbook
+Install dependencies:
+```bash
+$ ./provision.sh
+```
+
+## Usage
+
+### Setup Macbook
 
 ```bash
 $ cd deployment
