@@ -9,5 +9,8 @@
   copy:
     src: "files/Package Control.sublime-settings"
     dest: "{{ sublime_package_settings_dest }}"
-    owner: "{{ ansible_env.USER }}"
-    group: "{{ group }}"
+
+- name: Add Flake8Lint user settings
+  copy:
+    src: files/Flake8Lint.sublime-settings
+    dest: "{{ sublime_flake8_settings }}"
