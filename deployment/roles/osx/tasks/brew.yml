@@ -13,6 +13,7 @@
     - docker
     - docker-machine
     - tree
+    - python3
 
 - name: "Install hombrew cask apps"
   homebrew_cask:
