@@ -3,6 +3,7 @@
   homebrew:
     name: "{{ item }}"
     state: present
+    update_homebrew: yes
   with_items:
     - git
     - sqlite
