@@ -3,7 +3,7 @@
   template: "src=pkg_control.py.j2 dest=/tmp/pkg_control.py"
 
 - name: "Install Package Control"
-  command: "python3 /tmp/install_subl_pkg.py"
+  command: "python3 /tmp/pkg_control.py"
 
 - name: "Add Packages"
   copy:
