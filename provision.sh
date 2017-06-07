@@ -11,8 +11,8 @@ fi
 
 
 if [ ! -x /usr/local/bin/ansible ]; then
-    echo "installing ansible via pip"
-    sudo pip install ansible
+    echo "installing ansible via homebrew"
+    brew install ansible
 else
     echo "ansible is installed"
 fi
