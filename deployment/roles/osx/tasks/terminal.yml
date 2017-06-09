@@ -10,7 +10,7 @@
     dest: "~/.bash_aliases"
 
 - name: Create config directory
-  file: "path=~/.config state=directory"
+  file: "path=~/.config/mupen64plus state=directory"
 
 - name: "Add mupen64plus config"
   copy:
