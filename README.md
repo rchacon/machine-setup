@@ -16,6 +16,11 @@ $ ./provision.sh
 
 ## Usage
 
+Note: The sublime : Install Package Control task (`deployment/roles/common/tasks/sublime.yml`) will fail the first time because the
+`~/Library/Application\ Support/Sublime\ Text\ 3/` directory isn't created until the first time you open Sublime Text.
+
+So for now, open Sublime and re-run the playbook.
+
 ### Setup Macbook
 
 ```bash
