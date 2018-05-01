@@ -1,6 +1,10 @@
 ---
 - name: Setup machine
   hosts: localhost
+  vars:
+    sublime_dir: "/home/{{ ansible_env.USER }}/.config/sublime-text-3"
+    sublime_package_settings_dest: "{{ sublime_dir }}/Packages/User/Package Control.sublime-settings"
+    sublime_installed_packages_path: "{{ sublime_dir }}/Installed Packages"
   roles:
     - ubuntu
     - common

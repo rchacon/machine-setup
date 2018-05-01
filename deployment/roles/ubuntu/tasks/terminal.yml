@@ -1,4 +1,10 @@
 ---
+- name: Make .ssh directory
+  file:
+    path: "/home/{{ ansible_env.USER }}/.ssh"
+    state: directory
+    mode: 0755
+
 - name: Add ssh config
   copy:
     src: files/ssh_config
@@ -8,11 +14,6 @@
   blockinfile:
     path: "/home/{{ ansible_env.USER }}/.bashrc"
     block: |
-      # Get aliases
-      if [ -f ~/Dropbox/.bash_aliases ]; then
-          . ~/Dropbox/.bash_aliases
-      fi
-
       # Customize look of terminal
       RED="\[\033[0;31m\]"
       YELLOW="\[\033[0;33m\]"
@@ -28,8 +29,3 @@
       }
 
       PS1="[$BLUE\u$WHITE@$BLUE${HOSTNAME%%.*}$WHITE]:\w$YELLOW\$(parse_git_branch)\$ \[\e[0m\]"
-
-      PATH=$PATH:/usr/local/bin:~/bin
-
-      export NVM_DIR="$HOME/.nvm"
-      [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

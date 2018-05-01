@@ -1,4 +1,4 @@
 # Inventory file for local deployment
 
-[macbook]
+#[macbook]
 localhost ansible_connection=local

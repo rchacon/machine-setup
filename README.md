@@ -39,6 +39,17 @@ Apps that need to be installed manually:
 ## Setup Ubuntu/Mint
 
 ```bash
+sudo apt-get install python-pip
+sudo apt-get install python-setuptools
+```
+
+```bash
+pip install setuptools --upgrade
+pip install --upgrade pip
+sudo python -m easy_install --upgrade pyOpenSSL
+```
+
+```bash
 $ cd deployment
 $ ansible-playbook -i local ubuntu.yml -K -e "github_email=<GITHUB_EMAIL>"
 ```
@@ -46,6 +57,4 @@ $ ansible-playbook -i local ubuntu.yml -K -e "github_email=<GITHUB_EMAIL>"
 Manual Steps:
 
 - Create ssh keys for github accounts
-- Add Windows VM
-- Copy ~/Documents
 - Install the Sublime license

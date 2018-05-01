@@ -1,14 +1,2 @@
 Host *
   ForwardAgent yes
-
-# NaviSite
-Host github.com
-  HostName github.com
-  User git
-  IdentityFile ~/.ssh/id_rsa
-
-# Personal
-Host github-personal
-  HostName github.com
-  User git
-  IdentityFile ~/.ssh/id_rsa_personal
