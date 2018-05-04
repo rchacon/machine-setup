@@ -11,9 +11,10 @@ curl -L https://api.github.com/repos/rchacon/machine-setup/tarball | tar xz
 
 ## Setup Macbook
 
-Install additional depedencies:
+Install ansible via homebrew:
 ```bash
-./provsion.sh
+/usr/bin/env ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew install ansible
 ```
 
 Run playbook:
@@ -37,7 +38,7 @@ Apps that need to be installed manually:
 
 ## Setup Ubuntu/Mint
 
-Install additional dependencies:
+Install ansible via pip:
 ```bash
 sudo apt-get install python-pip
 sudo apt-get install python-setuptools
