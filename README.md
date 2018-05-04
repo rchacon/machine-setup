@@ -6,7 +6,7 @@ My machine setup automated with Ansible.
 
 Download repo:
 ```bash
-$ curl -L https://api.github.com/repos/rchacon/machine-setup/tarball | tar xz
+curl -L https://api.github.com/repos/rchacon/machine-setup/tarball | tar xz
 ```
 
 ## Setup Macbook
@@ -46,8 +46,8 @@ pip install --user ansible
 
 Run playbook:
 ```bash
-$ cd deployment
-$ ansible-playbook -i local ubuntu.yml -K -e "github_email=<GITHUB_EMAIL>"
+cd deployment
+ansible-playbook -i local ubuntu.yml -K -e "github_email=<GITHUB_EMAIL>"
 ```
 
 Manual Steps:
