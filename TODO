@@ -1,8 +1,0 @@
-## common
-
-- pkg specific config for sublime. ie flake8
-
-## ubuntu
-
-- install repo keys for apt packages
-- finish dnsmasq config
