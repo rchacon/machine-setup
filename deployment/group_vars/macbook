@@ -1,6 +1,0 @@
----
-sublime_dir: "/Users/{{ ansible_env.USER }}/Library/Application Support/Sublime Text 3"
-sublime_packages_dir: "/Users/{{ ansible_env.USER }}/Library/Application Support/Sublime Text 3/Packages/User"
-sublime_package_settings_dest: "{{ sublime_dir }}/Packages/User/Package Control.sublime-settings"
-sublime_installed_packages_path: "{{ sublime_dir }}/Installed Packages"
-sublime_flake8_settings: "{{ sublime_packages_dir }}/Flake8Lint.sublime-settings"

@@ -6,27 +6,27 @@ My machine setup automated with Ansible.
 
 Download repo:
 ```bash
-$ curl -L https://api.github.com/repos/rchacon/machine-setup/tarball | tar xz
+curl -L https://api.github.com/repos/rchacon/machine-setup/tarball | tar xz
 ```
 
-Install dependencies:
+## Setup Macbook
+
+Install ansible via homebrew:
 ```bash
-$ ./provision.sh
+/usr/bin/env ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew install ansible
 ```
 
-## Usage
+Run playbook:
+```bash
+cd deployment
+ansible-playbook -i local macbook.yml -K -e "github_email=<GITHUB_EMAIL>"
+```
 
 Note: The sublime : Install Package Control task (`deployment/roles/common/tasks/sublime.yml`) will fail the first time because the
 `~/Library/Application\ Support/Sublime\ Text\ 3/` directory isn't created until the first time you open Sublime Text.
 
 So for now, open Sublime and re-run the playbook.
-
-### Setup Macbook
-
-```bash
-$ cd deployment
-$ ansible-playbook -i local macbook.yml -K -e "github_email=<GITHUB_EMAIL>"
-```
 
 Apps that need to be installed manually:
 
@@ -36,3 +36,22 @@ Apps that need to be installed manually:
 - Fluenz
 - HP Printer/Scanner software
 
+## Setup Ubuntu/Mint
+
+Install ansible via pip:
+```bash
+sudo apt-get install python-pip
+sudo apt-get install python-setuptools
+pip install --user ansible
+```
+
+Run playbook:
+```bash
+cd deployment
+ansible-playbook -i local ubuntu.yml -K -e "github_email=<GITHUB_EMAIL>"
+```
+
+Manual Steps:
+
+- Create ssh keys for github accounts
+- Install the Sublime license

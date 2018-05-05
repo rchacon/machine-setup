@@ -1,0 +1,4 @@
+---
+- include: "apt.yml"
+- include: "docker-post-install.yml"
+- include: "terminal.yml"

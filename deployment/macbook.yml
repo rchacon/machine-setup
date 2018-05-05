@@ -1,6 +1,8 @@
 ---
 - name: Setup machine
   hosts: localhost
+  vars:
+    sublime_user_dir: "/Users/{{ ansible_env.USER }}/Library/Application Support/Sublime Text 3"
   roles:
     - osx
     - common

@@ -1,0 +1,8 @@
+---
+- name: Setup machine
+  hosts: localhost
+  vars:
+    sublime_user_dir: "/home/{{ ansible_env.USER }}/.config/sublime-text-3"
+  roles:
+    - ubuntu
+    - common

@@ -8,9 +8,9 @@
 - name: "Add Packages"
   copy:
     src: "files/Package Control.sublime-settings"
-    dest: "{{ sublime_package_settings_dest }}"
+    dest: "{{ sublime_user_dir }}/Packages/User/Package Control.sublime-settings"
 
 - name: Add Flake8Lint user settings
   copy:
     src: files/Flake8Lint.sublime-settings
-    dest: "{{ sublime_flake8_settings }}"
+    dest: "{{ sublime_user_dir }}/Packages/User/Flake8Lint.sublime-settings"
