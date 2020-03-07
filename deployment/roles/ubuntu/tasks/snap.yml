@@ -1,0 +1,6 @@
+---
+- name: "Install hugo"
+  snap:
+    name: hugo
+    channel: extended
+  become: "yes"
