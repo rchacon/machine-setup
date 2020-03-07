@@ -1,2 +1,13 @@
 Host *
   ForwardAgent yes
+
+# Work account
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_rsa
+
+Host github-personal
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_rsa_personal
