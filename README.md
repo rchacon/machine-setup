@@ -52,4 +52,3 @@ For Ubuntu, your user is added to the `docker` group but in order for it to take
 ## TODO
 
 - Install Chrome and Slack
-- Create ~/src/git directory

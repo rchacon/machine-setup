@@ -31,3 +31,10 @@
       }
 
       PS1="[$BLUE\u$WHITE@$BLUE${HOSTNAME%%.*}$WHITE]:\w$YELLOW\$(parse_git_branch)\$ \[\e[0m\]"
+
+- name: Append to bash_aliases
+  blockinfile:
+    path: "/home/{{ ansible_env.USER }}/.bash_aliases"
+    create: "yes"
+    block: |
+      alias cg='cd ~/src/git'
