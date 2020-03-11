@@ -4,3 +4,8 @@
     name: hugo
     channel: extended
   become: "yes"
+
+- name: "Install gimp"
+  snap:
+    name: gimp
+  become: "yes"
