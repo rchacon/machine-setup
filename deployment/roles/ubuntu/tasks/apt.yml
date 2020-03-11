@@ -13,6 +13,7 @@
     - libgnutls28-dev
     - python-dev
     - python3-dev
+    - python3-pip
     - python3-gpg  # For dropbox. Use python-gpgme for 16.04 or lower.
     - nodejs
     - npm
