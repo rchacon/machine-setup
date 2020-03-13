@@ -8,11 +8,3 @@
   copy:
     src: files/bash_aliases
     dest: "~/.bash_aliases"
-
-- name: Create config directory
-  file: "path=~/.config/mupen64plus state=directory"
-
-- name: "Add mupen64plus config"
-  copy:
-    src: files/mupen64plus.cfg
-    dest: "~/.config/mupen64plus/mupen64plus.cfg"

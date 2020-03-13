@@ -1,5 +1,2 @@
 # ll
 alias ll="ls -la"
-
-# Mario karting it
-alias mariokart="cd /Applications/mupen64plus-bundle-osx64-2.5 && ./run_rice.sh ~/roms/mariokart64/Mario\ Kart\ 64.v64"
