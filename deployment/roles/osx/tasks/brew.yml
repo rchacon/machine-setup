@@ -21,17 +21,10 @@
     state: present
   with_items:
     - spotify
-    - skype
-    - virtualbox
-    - vagrant
     - sublime-text
     - dropbox
     - iterm2
     - slack
     - google-chrome
     - firefox
-    - vlc
-    - openoffice
     - gimp
-    - kdiff3
-    - unetbootin
