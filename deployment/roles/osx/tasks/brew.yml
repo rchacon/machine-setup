@@ -6,6 +6,8 @@
     update_homebrew: yes
   with_items:
     - ack
+    - docker
+    - docker-machine
     - git
     - npm
     - nvm
@@ -27,3 +29,4 @@
     - google-chrome
     - firefox
     - gimp
+    - virtualbox

@@ -41,7 +41,6 @@ ansible-playbook -i local ubuntu.yml -K -e "github_email=<GITHUB_EMAIL>"
 
 - Enable infinite scroll in terminator (ubuntu)
 - Install Chrome and Slack (ubuntu)
-- Install "Docker Desktop for Mac" (macOS)
 - Make bash default shell with `chsh -s /bin/bash` (macOS)
 - Create ssh keys for github accounts (both)
 - Install the Sublime license (both)
@@ -51,3 +50,5 @@ ansible-playbook -i local ubuntu.yml -K -e "github_email=<GITHUB_EMAIL>"
 The Sublime Install Package Control task (`deployment/roles/common/tasks/sublime.yml`) will fail the first time because the `~/Library/Application\ Support/Sublime\ Text\ 3/` directory on macOS and `~/.config/sublime-text-3/` on Ubuntu aren't created until the first time you open Sublime Text. So for now, open Sublime and re-run the playbook.
 
 For Ubuntu, your user is added to the `docker` group but in order for it to take affect you have to logout and log back in.
+
+For macOS, installing virtualbox will fail the first time because of macOS's security settings. After this step fails go into Security settings and enable Oracle then re-run the playbook.
