@@ -1,0 +1,7 @@
+---
+- name: Create local R library
+  file:
+    path: "{{ home_dir }}/Library/R/site-library"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ group }}"
+    state: directory

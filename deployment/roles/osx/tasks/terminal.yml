@@ -20,8 +20,10 @@
 
       PS1="[$BLUE\u$WHITE@$BLUE${HOSTNAME%%.*}$WHITE]:\w$YELLOW\$(parse_git_branch)\$ \[\e[0m\]"
 
-      # Homebrew
-      export PATH="/usr/local/bin:$PATH"
+      # Homebrew, Python
+      export PATH="/usr/local/bin:{{ home_dir }}/Library/Python/3.7/bin/:$PATH"
+
+      export R_LIBS={{ home_dir }}/Library/R/site-library
 
       # aliases
       source ~/.bash_aliases
