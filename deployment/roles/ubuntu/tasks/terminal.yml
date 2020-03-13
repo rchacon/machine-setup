@@ -1,15 +1,4 @@
 ---
-- name: Make .ssh directory
-  file:
-    path: "/home/{{ ansible_env.USER }}/.ssh"
-    state: directory
-    mode: 0755
-
-- name: Add ssh config
-  copy:
-    src: files/ssh_config
-    dest: "/home/{{ ansible_env.USER }}/.ssh/config"
-
 - name: Append to bashrc
   blockinfile:
     path: "/home/{{ ansible_env.USER }}/.bashrc"
@@ -31,10 +20,3 @@
       }
 
       PS1="[$BLUE\u$WHITE@$BLUE${HOSTNAME%%.*}$WHITE]:\w$YELLOW\$(parse_git_branch)\$ \[\e[0m\]"
-
-- name: Append to bash_aliases
-  blockinfile:
-    path: "/home/{{ ansible_env.USER }}/.bash_aliases"
-    create: "yes"
-    block: |
-      alias cg='cd ~/src/git'

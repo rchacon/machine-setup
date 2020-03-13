@@ -1,10 +1,27 @@
 ---
-- name: "Add bash_profile"
-  copy:
-    src: files/bash_profile
-    dest: "~/.bash_profile"
+- name: Append to bash_profile
+  blockinfile:
+    path: "{{ home_dir }}/.bash_profile"
+    create: "yes"
+    block: |
+      # Git branch in prompt.
 
-- name: "Add bash_aliases"
-  copy:
-    src: files/bash_aliases
-    dest: "~/.bash_aliases"
+      parse_git_branch() {
+        git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+      }
+
+      # Customize look of terminal
+      RED="\[\033[0;31m\]"
+      YELLOW="\[\033[0;33m\]"
+      GREEN="\[\033[0;32m\]"
+      NO_COLOR="\[\033[0m\]"
+      WHITE="\[\e[01;37m\]"
+      BLUE="\[\033[1;34m\]"
+
+      PS1="[$BLUE\u$WHITE@$BLUE${HOSTNAME%%.*}$WHITE]:\w$YELLOW\$(parse_git_branch)\$ \[\e[0m\]"
+
+      # Homebrew
+      export PATH="/usr/local/bin:$PATH"
+
+      # aliases
+      source ~/.bash_aliases
