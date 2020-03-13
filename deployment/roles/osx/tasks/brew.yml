@@ -5,15 +5,14 @@
     state: present
     update_homebrew: yes
   with_items:
+    - ack
     - git
-    - sqlite
     - npm
     - nvm
-    - ssh-copy-id
-    - docker
-    - docker-machine
-    - tree
     - python3
+    - r
+    - ssh-copy-id
+    - tree
 
 - name: "Install hombrew cask apps"
   homebrew_cask:
@@ -21,17 +20,10 @@
     state: present
   with_items:
     - spotify
-    - skype
-    - virtualbox
-    - vagrant
     - sublime-text
     - dropbox
     - iterm2
     - slack
     - google-chrome
     - firefox
-    - vlc
-    - openoffice
     - gimp
-    - kdiff3
-    - unetbootin
