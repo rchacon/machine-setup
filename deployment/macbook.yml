@@ -2,6 +2,7 @@
 - name: Setup machine
   hosts: localhost
   vars:
+    group: "staff"
     home_dir: "/Users/{{ ansible_env.USER }}"
     sublime_user_dir: "/Users/{{ ansible_env.USER }}/Library/Application Support/Sublime Text 3"
   roles:

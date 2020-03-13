@@ -3,4 +3,5 @@
   file:
     path: "{{ home_dir }}/src/git"
     owner: "{{ ansible_env.USER }}"
-    group: "{{ ansible_env.USER }}"
+    group: "{{ group }}"
+    state: directory
