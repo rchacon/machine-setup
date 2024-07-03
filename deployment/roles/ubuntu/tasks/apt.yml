@@ -11,20 +11,15 @@
     - libxslt1-dev
     - libcurl4-gnutls-dev
     - libgnutls28-dev
-    - python-dev
     - python3-dev
     - python3-pip
-    - python3-gpg  # For dropbox. Use python-gpgme for 16.04 or lower.
     - nodejs
     - npm
-    - keepass2
     - terminator
-    - dropbox
     - kdiff3
     - vim
     - tree
     - ack
-    - snapd
   become: "yes"
 
 # Docker
@@ -72,17 +67,3 @@
   apt: "pkg=sublime-text state=present update-cache=yes"
   become: "yes"
 
-# Spotify
-- name: "Add repo key for spotify"
-  apt_key:
-    url: https://download.spotify.com/debian/pubkey.gpg
-  become: "yes"
-
-- name: "Add apt repo for spotify"
-  apt_repository:
-    repo: "deb http://repository.spotify.com stable non-free"
-  become: "yes"
-
-- name: "Install spotify"
-  apt: "pkg=spotify-client state=present update-cache=yes"
-  become: "yes"

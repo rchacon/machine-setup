@@ -8,3 +8,8 @@
   pip:
     name: virtualenv
     extra_args: --user
+
+- name: "pip install pre-commit"
+  pip:
+    name: pre-commit
+    extra_args: --user

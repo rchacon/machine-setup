@@ -5,7 +5,7 @@ Host *
 Host github.com
   HostName github.com
   User git
-  IdentityFile ~/.ssh/id_rsa
+  IdentityFile ~/.ssh/id_ed25519
 
 Host github-personal
   HostName github.com

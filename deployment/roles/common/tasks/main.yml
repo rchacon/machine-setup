@@ -1,6 +1,5 @@
 ---
-- include: "git.yml"
-- include: "pip.yml"
-- include: "sublime.yml"
-- include: "file.yml"
-- include: "terminal.yml"
+- include_tasks: "git.yml"
+- include_tasks: "pip.yml"
+- include_tasks: "file.yml"
+- include_tasks: "terminal.yml"

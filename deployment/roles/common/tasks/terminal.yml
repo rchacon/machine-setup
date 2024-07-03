@@ -9,6 +9,7 @@
   copy:
     src: files/ssh_config
     dest: "{{ home_dir }}/.ssh/config"
+    mode: 0644
 
 - name: Append to bash_aliases
   blockinfile:
