@@ -23,7 +23,7 @@ cd deployment
 ansible-playbook -i local macbook.yml -K -e "github_email=<GITHUB_EMAIL>"
 ```
 
-## Setup Ubuntu 18.04
+## Setup Ubuntu
 
 Install ansible via pip:
 ```bash
