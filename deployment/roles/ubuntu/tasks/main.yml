@@ -1,5 +1,5 @@
 ---
-- include: "apt.yml"
-- include: "snap.yml"
-- include: "docker-post-install.yml"
-- include: "terminal.yml"
+- include_tasks: "apt.yml"
+- include_tasks: "snap.yml"
+- include_tasks: "docker-post-install.yml"
+- include_tasks: "terminal.yml"
