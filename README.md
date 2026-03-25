@@ -42,7 +42,7 @@ It's possible that `ansible-playbook` was installed somewhere that isn't in your
 After `Package Control` for sublime has been manually installed run `post-install` tasks:
 
 ```
-ansible-playbook -i local ubuntu.yml -K -e "github_name='Raul Chacon'" -e "github_email=chaconrj@gmail.com" --tags "never,post-install"
+ansible-playbook -i local ubuntu.yml -K --tags "never,post-install"
 ```
 
 ## Manual Steps
