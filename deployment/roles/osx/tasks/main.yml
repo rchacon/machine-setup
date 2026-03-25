@@ -1,4 +1,4 @@
 ---
-- include: "brew.yml"
-- include: "file.yml"
-- include: "terminal.yml"
+- include_tasks: "brew.yml"
+- include_tasks: "file.yml"
+- include_tasks: "terminal.yml"

@@ -3,7 +3,7 @@
   blockinfile:
     path: "/home/{{ ansible_env.USER }}/.bashrc"
     block: |
-      export PATH=/home/{{ ansible_env.USER }}/.local/bin:/snap/bin:$PATH
+      export PATH=/home/{{ ansible_env.USER }}/.local/bin:$PATH
 
       # Customize look of terminal
       RED="\[\033[0;31m\]"
