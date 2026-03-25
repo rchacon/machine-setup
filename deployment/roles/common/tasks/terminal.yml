@@ -1,19 +1,14 @@
 ---
-- name: Make .ssh directory
-  file:
-    path: "{{ home_dir }}/.ssh"
-    state: directory
-    mode: 0755
-
-- name: Add ssh config
-  copy:
-    src: files/ssh_config
-    dest: "{{ home_dir }}/.ssh/config"
-
 - name: Append to bash_aliases
   blockinfile:
     path: "{{ home_dir }}/.bash_aliases"
     create: "yes"
     block: |
-      alias ll='ls -la'
       alias cg='cd ~/src/git'
+
+- name: Append more to bash_aliases just for Mac
+  blockinfile:
+    path: "{{ home_dir }}/.bash_aliases"
+    block: |
+      alias ll='ls -la'
+  when: ansible_os_family == "Darwin"
