@@ -1,7 +1,13 @@
 ---
+- name: Check if directory for git repos exists
+  ansible.builtin.stat:
+    path: "{{ home_dir }}/src/git"
+  register: git_dir_stat
+
 - name: Create directory for git repos
   file:
     path: "{{ home_dir }}/src/git"
     owner: "{{ ansible_env.USER }}"
     group: "{{ group }}"
     state: directory
+  when: not git_dir_stat.stat.exists

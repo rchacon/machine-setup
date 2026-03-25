@@ -1,6 +1,7 @@
 ---
 - include_tasks: "git.yml"
 - include_tasks: "pip.yml"
-- include_tasks: "sublime.yml"
 - include_tasks: "file.yml"
 - include_tasks: "terminal.yml"
+- include_tasks: "sublime.yml"
+  tags: [never, post-install]

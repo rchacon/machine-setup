@@ -34,10 +34,16 @@ pip install --user wheel ansible
 Run playbook:
 ```bash
 cd deployment
-ansible-playbook -i local ubuntu.yml -K -e "github_email=<GITHUB_EMAIL>"
+ansible-playbook -i local ubuntu.yml -K -e "github_name='<FIRST_NAME> <LAST_NAME>'" -e "github_email=<GITHUB_EMAIL>"
 ```
 
 It's possible that `ansible-playbook` was installed somewhere that isn't in your path. The output from pip installing `ansible-playbook` should say where it was installed.
+
+After `Package Control` for sublime has been manually installed run `post-install` tasks:
+
+```
+ansible-playbook -i local ubuntu.yml -K -e "github_name='Raul Chacon'" -e "github_email=chaconrj@gmail.com" --tags "never,post-install"
+```
 
 ## Manual Steps
 
@@ -45,11 +51,9 @@ It's possible that `ansible-playbook` was installed somewhere that isn't in your
 - Install Chrome and Slack (ubuntu)
 - Make bash default shell with `chsh -s /bin/bash` (macOS)
 - Create ssh keys for github accounts (both)
-- Install the Sublime license (both)
+- Install `Package Control` package and license for Sublime (both)
 
 ## Caveats
-
-The Sublime Install Package Control task (`deployment/roles/common/tasks/sublime.yml`) will fail the first time because the `~/Library/Application\ Support/Sublime\ Text\ 3/` directory on macOS and `~/.config/sublime-text-3/` on Ubuntu aren't created until the first time you open Sublime Text. So for now, open Sublime and re-run the playbook.
 
 For Ubuntu, your user is added to the `docker` group but in order for it to take affect you have to logout and log back in.
 
