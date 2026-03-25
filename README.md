@@ -27,7 +27,7 @@ ansible-playbook -i local macbook.yml -K -e "github_email=<GITHUB_EMAIL>"
 
 Install ansible via pip:
 ```bash
-sudo apt-get install python-pip python-setuptools
+sudo apt-get install python3-pip python3-setuptools
 pip install --user wheel ansible
 ```
 
@@ -36,6 +36,8 @@ Run playbook:
 cd deployment
 ansible-playbook -i local ubuntu.yml -K -e "github_email=<GITHUB_EMAIL>"
 ```
+
+It's possible that `ansible-playbook` was installed somewhere that isn't in your path. The output from pip installing `ansible-playbook` should say where it was installed.
 
 ## Manual Steps
 
