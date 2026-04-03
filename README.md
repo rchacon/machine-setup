@@ -11,10 +11,25 @@ curl -L https://api.github.com/repos/rchacon/machine-setup/tarball | tar xz
 
 ## Setup Ubuntu
 
-Install ansible via pip:
+Install required apt packages:
 ```bash
 sudo apt-get install python3-pip python3-setuptools
-pip install --user wheel ansible
+```
+
+Linux Mint 22.3 includes `python3.12` which is marked as protected and wouldn't let me install pip packages using `--user`. The error message required me to use a virtual environment.
+```bash
+sudo apt install python3.12-venv
+```
+
+Activate the virtual env:
+```bash
+python3 -m venv ~/.venv
+source ~/.venv/bin/activate
+```
+
+Install ansible via pip:
+```bash
+pip install wheel ansible
 ```
 
 ## Setup Macbook
