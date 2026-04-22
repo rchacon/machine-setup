@@ -69,3 +69,65 @@
 - name: "Install sublime-text"
   apt: "pkg=sublime-text state=present update-cache=yes"
   become: "yes"
+
+# VS Code
+- name: Add Microsoft GPG key
+  shell: |
+    wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > /usr/share/keyrings/microsoft.gpg
+  args:
+    creates: /usr/share/keyrings/microsoft.gpg
+  become: yes
+
+- name: Add VS Code repository
+  copy:
+    dest: /etc/apt/sources.list.d/vscode.list
+    content: |
+      deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main
+  become: yes
+
+- name: Update apt cache
+  apt:
+    update_cache: yes
+  become: yes
+
+- name: Install VS Code
+  apt:
+    name: code
+    state: present
+  become: yes
+
+# 1password
+- name: Add 1Password GPG key
+  shell: |
+    curl -sS https://downloads.1password.com/linux/keys/1password.asc | gpg --dearmor > /usr/share/keyrings/1password-archive-keyring.gpg
+  args:
+    creates: /usr/share/keyrings/1password-archive-keyring.gpg
+  become: yes
+
+- name: Add 1Password repository
+  copy:
+    dest: /etc/apt/sources.list.d/1password.list
+    content: |
+      deb [arch=amd64 signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/amd64 stable main
+  become: yes
+
+- name: Add debsig policy (recommended by 1Password)
+  shell: |
+    mkdir -p /etc/debsig/policies/AC2D62742012EA22/
+    curl -sS https://downloads.1password.com/linux/debian/debsig/1password.pol > /etc/debsig/policies/AC2D62742012EA22/1password.pol
+    mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22
+    curl -sS https://downloads.1password.com/linux/keys/1password.asc | gpg --dearmor > /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
+  args:
+    creates: /etc/debsig/policies/AC2D62742012EA22/1password.pol
+  become: yes
+
+- name: Update apt cache
+  apt:
+    update_cache: yes
+  become: yes
+
+- name: Install 1Password
+  apt:
+    name: 1password
+    state: present
+  become: yes
