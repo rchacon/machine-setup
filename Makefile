@@ -1,28 +1,20 @@
 SHELL := /bin/bash
 
-.PHONY: ubuntu macbook install post-ubuntu post-macbook
+.PHONY: install start post-start
 
 install:
 	python3 -m venv .venv && \
 	source .venv/bin/activate && \
 	python3 -m pip install -r requirements.txt
 
-ubuntu:
+start:
 	source .env && \
-	source .venv/bin/activate && \
+	if [ "$$TARGET" = "ubuntu" ]; then source .venv/bin/activate; fi && \
 	cd deployment && \
-	ansible-playbook -i local ubuntu.yml -K -e "github_name=$$GITHUB_NAME" -e "github_email=$$GITHUB_EMAIL"
+	ansible-playbook -i local $$TARGET.yml -K -e "github_name=$$GITHUB_NAME" -e "github_email=$$GITHUB_EMAIL"
 
-macbook:
+post-start:
 	source .env && \
+	if [ "$$TARGET" = "ubuntu" ]; then source .venv/bin/activate; fi && \
 	cd deployment && \
-	ansible-playbook -i local macbook.yml -K -e "github_name=$$GITHUB_NAME" -e "github_email=$$GITHUB_EMAIL"
-
-post-ubuntu:
-	source .venv/bin/activate && \
-	cd deployment && \
-	ansible-playbook -i local ubuntu.yml -K --tags "never,post-install"
-
-post-macbook:
-	cd deployment && \
-	ansible-playbook -i local macbook.yml -K --tags "never,post-install"
+	ansible-playbook -i local $$TARGET.yml -K --tags "never,post-install"

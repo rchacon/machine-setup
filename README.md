@@ -38,15 +38,15 @@ brew install ansible
 
 ## Usage
 
-Copy `.env.sample` to `.env` and fill in your name and email, then run the playbook via the Makefile:
+Copy `.env.sample` to `.env`, fill in your name and email, and set `TARGET` to `ubuntu` or `macbook`, then run the playbook via the Makefile:
 ```bash
-make ubuntu   # or: make macbook
+make start
 ```
 
 After `Package Control` for sublime has been manually installed run `post-install` tasks:
 
 ```bash
-make post-ubuntu   # or: make post-macbook
+make post-start
 ```
 
 ## Manual Steps
