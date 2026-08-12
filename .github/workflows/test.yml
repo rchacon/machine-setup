@@ -1,0 +1,76 @@
+name: test
+
+on:
+  pull_request:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+defaults:
+  run:
+    # Steps in a `container:` job default to `sh`, which lacks `source`.
+    shell: bash
+
+jobs:
+  syntax-check:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    container:
+      image: ubuntu:24.04
+    timeout-minutes: 5
+    steps:
+      - name: Install prerequisites
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends \
+            python3 python3-venv python3-pip make
+
+      - uses: actions/checkout@v4
+
+      - run: make install
+
+      - name: Syntax check playbooks
+        run: |
+          source .venv/bin/activate
+          cd deployment
+          ansible-playbook -i local ubuntu.yml --syntax-check
+          ansible-playbook -i local macbook.yml --syntax-check
+
+  # Full smoke test: actually applies ubuntu.yml in a container. This
+  # installs real packages (Docker, VS Code, 1Password, Sublime, ...) so
+  # it's slow and depends on third-party repos/keyservers -- run it on a
+  # schedule / manually rather than gating every push or PR.
+  full-run:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    container:
+      image: ubuntu:24.04
+    timeout-minutes: 20
+    env:
+      USER: root
+      # Container runs as root already, so ansible doesn't need to escalate.
+      ANSIBLE_BECOME: "false"
+    steps:
+      - name: Install prerequisites
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends \
+            python3 python3-venv python3-pip python3-apt \
+            sudo make git curl gnupg ca-certificates
+
+      - uses: actions/checkout@v4
+
+      - name: Write .env
+        run: |
+          cat > .env <<'EOF'
+          GITHUB_NAME="CI Runner"
+          GITHUB_EMAIL="ci@example.com"
+          TARGET=ubuntu
+          EOF
+
+      - run: make install
+
+      - name: make run
+        # -K prompts for a BECOME password; feed it an empty line since
+        # privilege escalation is disabled anyway (see ANSIBLE_BECOME above).
+        run: echo | make run
