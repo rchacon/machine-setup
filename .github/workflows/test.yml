@@ -7,6 +7,11 @@ on:
     - cron: "0 6 * * *"
   workflow_dispatch:
 
+defaults:
+  run:
+    # Steps in a `container:` job default to `sh`, which lacks `source`.
+    shell: bash
+
 jobs:
   syntax-check:
     if: github.event_name == 'push' || github.event_name == 'pull_request'
