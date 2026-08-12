@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-.PHONY: ubuntu macbook install
+.PHONY: ubuntu macbook install post-ubuntu post-macbook
 
 install:
 	python3 -m venv .venv && \
@@ -17,3 +17,12 @@ macbook:
 	source .env && \
 	cd deployment && \
 	ansible-playbook -i local macbook.yml -K -e "github_name=$$GITHUB_NAME" -e "github_email=$$GITHUB_EMAIL"
+
+post-ubuntu:
+	source .venv/bin/activate && \
+	cd deployment && \
+	ansible-playbook -i local ubuntu.yml -K --tags "never,post-install"
+
+post-macbook:
+	cd deployment && \
+	ansible-playbook -i local macbook.yml -K --tags "never,post-install"

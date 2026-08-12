@@ -46,9 +46,7 @@ make ubuntu   # or: make macbook
 After `Package Control` for sublime has been manually installed run `post-install` tasks:
 
 ```bash
-source .venv/bin/activate
-cd deployment
-ansible-playbook -i local <ubuntu.yml|macbook.yml> -K --tags "never,post-install"
+make post-ubuntu   # or: make post-macbook
 ```
 
 ## Manual Steps
