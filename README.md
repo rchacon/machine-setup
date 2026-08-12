@@ -21,15 +21,9 @@ Linux Mint 22.3 includes `python3.12` which is marked as protected and wouldn't 
 sudo apt install python3.12-venv
 ```
 
-Activate the virtual env:
+Create the virtual env and install ansible into it:
 ```bash
-python3 -m venv ~/.venv
-source ~/.venv/bin/activate
-```
-
-Install ansible via pip:
-```bash
-pip install wheel ansible
+make install
 ```
 
 ## Setup Macbook
@@ -44,17 +38,16 @@ brew install ansible
 
 ## Usage
 
-Run playbook:
+Copy `.env.sample` to `.env` and fill in your name and email, then run the playbook via the Makefile:
 ```bash
-cd deployment
-ansible-playbook -i local <ubuntu.yml|macbook.yml> -K -e "github_name='<FIRST_NAME> <LAST_NAME>'" -e "github_email=<GITHUB_EMAIL>"
+make ubuntu   # or: make macbook
 ```
-
-It's possible that `ansible-playbook` was installed somewhere that isn't in your path. The output from pip installing `ansible-playbook` should say where it was installed.
 
 After `Package Control` for sublime has been manually installed run `post-install` tasks:
 
 ```bash
+source .venv/bin/activate
+cd deployment
 ansible-playbook -i local <ubuntu.yml|macbook.yml> -K --tags "never,post-install"
 ```
 
