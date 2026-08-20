@@ -24,6 +24,7 @@
     - tree
     - ack
     - xclip
+    - wget
   become: "yes"
 
 # Docker
