@@ -41,7 +41,7 @@ jobs:
   # it's slow and depends on third-party repos/keyservers -- run it on a
   # schedule / manually rather than gating every push or PR.
   full-run:
-    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     container:
       image: ubuntu:24.04
