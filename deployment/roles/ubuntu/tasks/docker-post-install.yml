@@ -8,5 +8,5 @@
   user:
     name: "{{ ansible_env.USER }}"
     append: "yes"
-    group: docker
+    groups: docker
   become: "yes"
