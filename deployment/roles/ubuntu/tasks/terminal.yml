@@ -1,9 +1,9 @@
 ---
 - name: Append to bashrc
   blockinfile:
-    path: "/home/{{ ansible_env.USER }}/.bashrc"
+    path: "{{ home_dir }}/.bashrc"
     block: |
-      export PATH=/home/{{ ansible_env.USER }}/.local/bin:$PATH
+      export PATH={{ home_dir }}/.local/bin:$PATH
 
       # Customize look of terminal
       RED="\[\033[0;31m\]"

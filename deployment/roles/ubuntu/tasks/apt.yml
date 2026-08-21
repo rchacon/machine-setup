@@ -18,12 +18,13 @@
     - npm
     - keepass2
     - terminator
-    - dropbox
+    - nautilus-dropbox
     - kdiff3
     - vim
     - tree
     - ack
     - xclip
+    - wget
   become: "yes"
 
 # Docker

@@ -3,8 +3,8 @@
   hosts: localhost
   vars:
     group: "{{ ansible_env.USER }}"
-    home_dir: "/home/{{ ansible_env.USER }}"
-    sublime_user_dir: "/home/{{ ansible_env.USER }}/.config/sublime-text"
+    home_dir: "{{ ansible_facts['user_dir'] }}"
+    sublime_user_dir: "{{ ansible_facts['user_dir'] }}/.config/sublime-text"
   roles:
     - ubuntu
     - common
